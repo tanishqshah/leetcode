@@ -6,6 +6,9 @@ public:
         int curr=0,jump=0;
         for(int i=0;i<n-1;i++){
             jump=max(jump,i+nums[i]);
+            if(jump>=n-1){
+                return ans+1;
+            }
             if(i==curr){
                 ans++;
                 curr=jump;
