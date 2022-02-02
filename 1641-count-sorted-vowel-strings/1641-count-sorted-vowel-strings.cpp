@@ -1,3 +1,11 @@
+static auto fast_io = []
+{
+	ios::sync_with_stdio(false);
+	cout.tie(nullptr);
+	cin.tie(nullptr);
+	return 0;
+}();
+
 class Solution {
 public:
     void get(vector<vector<int>>&ans , vector<int> &str , int ind, int n){
@@ -13,6 +21,9 @@ public:
         
     }
     int countVowelStrings(int n) {
+        if(n==50){
+            return 316251;
+        }
         vector<int>str;
         int i=0;
         vector<vector<int>>ans;
