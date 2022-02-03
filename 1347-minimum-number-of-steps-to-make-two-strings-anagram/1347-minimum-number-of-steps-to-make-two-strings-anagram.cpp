@@ -6,15 +6,12 @@ public:
         unordered_map<char,int>mp;
         for(int i=0;i<s.length();i++){
             mp[s[i]]++;
-        }
-        
-        for(int i=0;i<t.length();i++){
-            if(mp[t[i]]>0)
-                mp[t[i]]--;
+            mp[t[i]]--;
         }
         int ans=0;
         for(auto i : mp){
-            ans=ans+i.second;
+            if(i.second>0)
+                ans=ans+i.second;
         }
         return ans;
     }
