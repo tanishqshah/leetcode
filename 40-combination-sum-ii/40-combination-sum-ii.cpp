@@ -1,28 +1,26 @@
 class Solution {
 public:
-    void getsum(vector<int>&v,vector<vector<int>>&vec,int index,vector<int>&A,int B)
-{
-    if(B==0)
-        return vec.push_back(v);
-    if(B<0)
-        return;
-    for(int i=index;i<A.size();i++)
-    {
-        if(i==index || A[i]!=A[i-1])
-        {
-            v.push_back(A[i]);
-            getsum(v,vec,i+1,A,B-A[i]);
-            v.pop_back();
+    void get(vector<vector<int>>&res , vector<int>&ans , vector<int> &nums , int x , int index){
+        if(x==0){
+            res.push_back(ans);
+            return ;
+        }
+        if(x<0)
+            return;
+        for(int i=index;i<nums.size();i++){
+                if(i==index || nums[i]!=nums[i-1]){
+                ans.push_back(nums[i]);
+                get(res,ans,nums,x-nums[i],i+1);
+                ans.pop_back();
+                }
         }
     }
-}
     
-    vector<vector<int>> combinationSum2(vector<int>& A, int B) {
-        int n=A.size();
-    sort(A.begin(),A.end());
-    vector<int>v;
-    vector<vector<int>>vec;
-    getsum(v,vec,0,A,B);
-    return vec;
+    vector<vector<int>> combinationSum2(vector<int>& nums, int x) {
+        vector<vector<int>>res;
+        vector<int>ans;
+        sort(nums.begin(),nums.end());
+        get(res,ans,nums,x,0);
+        return res;
     }
 };
