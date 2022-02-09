@@ -1,3 +1,3 @@
 # LEETCODE
 
-Preparation of Interview
+Preparation for Interview
