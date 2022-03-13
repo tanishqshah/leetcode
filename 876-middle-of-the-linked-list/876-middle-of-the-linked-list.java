@@ -11,12 +11,8 @@
 class Solution {
     public ListNode middleNode(ListNode head) {
         ListNode ans=head;
-        while(head!=null){
-            head=head.next;
-            if(head==null){
-                break;
-            }
-            head=head.next;
+        while(head!=null && head.next!=null){
+            head=head.next.next;
             ans=ans.next;
         }
         return ans;
