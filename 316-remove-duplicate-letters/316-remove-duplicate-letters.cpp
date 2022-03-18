@@ -1,30 +1,41 @@
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        map<char,int>mp;
-        for(int i=0;i<s.length();i++){
-            mp[s[i]]=i;
-        }
+        // cnt for storing frequency of characters
+        // vis for marking visited characters
+        vector<int> cnt(26,0)  , vis(26,0);
         
-        stack<char>st;
-        map<char,int>vis;
+        string res = "";
+        int n = s.size();
         
-        for(int i=0;i<s.size();i++){
-            while(vis[s[i]]==0 && !st.empty() && st.top()>s[i] && mp[st.top()]>i){
-                vis[st.top()]=0;
-                st.pop();
+        for(int i = 0; i<n; ++i)
+            cnt[s[i] - 'a']++;
+        
+        for(int i = 0; i<n; ++i)
+        {
+            // decrease cnt of current character
+            cnt[s[i] - 'a']--;
+            
+            // If character is not already
+            // in answer
+            if(!vis[s[i]- 'a'])
+            {
+                // Last character > s[i]
+                // and its count > 0
+                while(res.size() > 0 && res.back() > s[i] && cnt[res.back() - 'a'] > 0)
+                {
+                    // marking letter visited
+                    vis[res.back() - 'a'] = 0;
+                    res.pop_back();
+                }
+                
+                // Add s[i] in res and
+                // mark it visited
+                res += s[i];
+                vis[s[i] - 'a'] = 1;
             }
-            if(vis[s[i]]==0){
-                st.push(s[i]);
-                vis[s[i]]=1;
-            }
         }
-        
-        string ans="";
-        while(!st.empty()){
-            ans=st.top()+ans;
-            st.pop();
-        }
-        return ans;
+        // return resultant string
+        return res;
     }
 };
