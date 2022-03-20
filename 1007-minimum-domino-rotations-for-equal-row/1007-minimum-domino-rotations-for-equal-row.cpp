@@ -9,13 +9,13 @@ public:
                 same[nums1[i]]++;
         }
         int n=nums1.size();
-        int ans=n;
+        int ans=INT_MAX;
         for(int i=1;i<=6;i++){
             if(a[i]+b[i]-same[i]==n){
                 int swap = min(a[i],b[i])-same[i];
                 ans=min(ans,swap);
             }
         }
-        return ans==n ? -1 : ans;
+        return ans==INT_MAX ? -1 : ans;
     }
 };
