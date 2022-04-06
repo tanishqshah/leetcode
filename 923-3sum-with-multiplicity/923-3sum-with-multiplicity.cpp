@@ -50,7 +50,7 @@ public:
                 }
             }
         }
-        return (int) ans;
+        return ans;
         
         // return count;
         
