@@ -7,14 +7,11 @@ public:
             if(nums[curr]<0)
             {
                 ans=curr;
+                return ans;
                 break;
             }
             nums[curr]=-1*nums[curr];
             
-        }
-        
-        for(auto i : nums){
-            i = abs (i);
         }
         return ans;
     }
