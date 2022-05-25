@@ -10,9 +10,27 @@ public:
                 change(grid, next_row, next_col);
             }   
         }
+        
+        // grid[row][col]='0';
+        // if(row<0 || row>=grid.size() || col<0 && col>=grid[0].size() || grid[row][col]!='1')
+        //     return;
+        // else{
+        //     change(grid,row+1,col);
+        //     change(grid,row-1,col);
+        //     change(grid,row,col+1);
+        //     change(grid,row,col-1);
+        // }
+        
     }
     int numIslands(vector<vector<char>>& grid) {
         int ans=0;
+        if(grid.size()==1 && grid[0].size()==1){
+            if(grid[0][0]=='1')
+                return 1;
+            else 
+                return 0;
+        }
+        
         for(int i=0;i<grid.size();i++){
             for(int j=0;j<grid[i].size();j++){
                 if(grid[i][j]=='1'){
