@@ -5,25 +5,23 @@ public:
         queue<int>q;
         vector<bool>vis(n,false);
         vis[0]=true;
-        for(int i : rooms[0])
-        {
+        for(int i : rooms[0]){
             q.push(i);
             vis[i]=true;
         }
         while(!q.empty()){
-            int temp=q.front();
+            int x=q.front();
             q.pop();
-            for(int i : rooms[temp]){
+            for(int i : rooms[x]){
                 if(vis[i]==false){
                     q.push(i);
                     vis[i]=true;
                 }
             }
         }
-        for(int i=1;i<n;i++){
-            if(vis[i]==false){
+        for(int i=0;i<n;i++){
+            if(vis[i]==false)
                 return false;
-            }
         }
         return true;
     }
