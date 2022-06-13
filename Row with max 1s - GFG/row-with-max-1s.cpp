@@ -8,18 +8,14 @@ class Solution{
 public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    int res=-1;
-	    int ans=0;
 	    for(int i=0;i<arr.size();i++){
-	        int cnt=0;
 	        for(int j=m-1;j>=0;j--){
-	            if(arr[i][j]==1)
-	                cnt++;
+	            if(arr[i][j]==1){
+	                m--;
+	                res=i;
+	            }
 	            else 
 	                break;
-	        }
-	        if(ans<cnt){
-	            ans=max(ans,cnt);
-	            res=i;
 	        }
 	    }
 	    return res;
