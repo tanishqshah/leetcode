@@ -7,15 +7,6 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:	
-	bool istrue(string par,string s){
-   if(par.size()%s.size()!=0)return false;
-   string str=s+s;
-   while(str.size()<par.size()){
-       str.append(s);
-   }
-    if(par==str)return true;
-   return false;
-}  
 	int isRepeat(string s)
 	{
 	    int n=s.length();
@@ -25,15 +16,13 @@ public:
 	   // com=com+s[0];
 	    for(int i=0;i<=s.length()/2;i++){
 	        com=com+s[i];
-	        if(istrue(s,com))
+	        if(s.length()%com.length()==0){
+	        string chk=com+com;
+	        while(chk.length()<s.length())
+	            chk.append(com);
+	        if(s==chk)
 	            return 1;
-	       // string chk=com+com;
-	       // while(chk.length()<s.length())
-	       //     chk.append(com);
-	       // if(s==chk)
-	       //     return true;
-	       // if(s.length()==com.length()*2)
-	       //     break;
+	        }
 	    }
 	    return 0;
 	}
