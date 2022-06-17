@@ -6,26 +6,26 @@ using namespace std;
 class Solution {
 public:
 	bool isBipartite(int v, vector<int>adj[]){
+	    // Code here
 	    vector<int>col(v,0);
+	    queue<int>q;
 	    for(int i=0;i<v;i++){
-	        if(col[i]!=0)
+	        if(col[i]!=0)   
 	            continue;
-	       queue<int>q;
-	       q.push(i);
-	       col[i]=1;
-	       while(!q.empty()){
-	           int curr=q.front();
-	           q.pop();
-	           for(int x : adj[curr]){
-	                if(col[x]==0){
-	                    col[x]=-col[curr];
-	                    q.push(x);
+	        col[i]=1;
+	        q.push(i);
+	        while(!q.empty()){
+	            int x=q.front();
+	            q.pop();
+	            for(auto z : adj[x]){
+	                if(col[z]==0){
+	                    col[z]=-col[x];
+	                    q.push(z);
 	                }
-	                else if(col[curr]==col[x])
+	                else if(col[z]==col[x])
 	                    return false;
-	                   
-	           }
-	       }
+	            }
+	        }
 	    }
 	    return true;
 	}
