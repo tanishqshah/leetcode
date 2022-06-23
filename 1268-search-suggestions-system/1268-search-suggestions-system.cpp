@@ -1,29 +1,40 @@
 class Solution {
 public:
-    vector<vector<string>> suggestedProducts(vector<string> &products,
-                                             string searchWord) {
-        sort(products.begin(), products.end());
-        vector<vector<string>> result;
-        int start, bsStart = 0, n=products.size();
-        string prefix;
-        for (char &c : searchWord) {
-            prefix += c;
-
-            // Get the starting index of word starting with `prefix`.
-            start = lower_bound(products.begin() + bsStart, products.end(), prefix) - products.begin();
-
-            // Add empty vector to result.
-            result.push_back({});
-
-            // Add the words with the same prefix to the result.
-            // Loop runs until `i` reaches the end of input or 3 times or till the
-            // prefix is same for `products[i]` Whichever comes first.
-            for (int i = start; i < min(start + 3, n) && !products[i].compare(0, prefix.length(), prefix); i++)
-                result.back().push_back(products[i]);
-
-            // Reduce the size of elements to binary search on since we know
-            bsStart = start;
+    vector<vector<string>> suggestedProducts(vector<string> &arr,
+                                             string query) {
+        vector<vector<string>>ans;
+    unordered_map<string,vector<string>>mp;
+    string add="";
+    for(int i=0;i<arr.size();i++){
+        add="";
+        for(int j=0;j<arr[i].size();j++){
+            add=add+arr[i][j];
+            mp[add].push_back(arr[i]);
         }
-        return result;
+        add="";
+    }
+    for(auto it = mp.begin(); it != mp.end(); it++){
+        sort(it->second.begin(), it->second.end());
+        if(it->second.size()>3){
+        it->second.resize(std::distance(it->second.begin(), std::unique(it->second.begin(), it->second.begin() + 3)));
+        }
+        else{
+            it->second.resize(std::distance(it->second.begin(), std::unique(it->second.begin(), it->second.begin() + it->second.size())));
+        }
+    }
+    add="";
+    vector<string>no;
+    int x=0;
+    for(int i=0;i<query.length();i++){
+        add=add+query[i];
+        if(mp[add].empty()){
+            ans.push_back(no);
+        }
+        else{
+            ans.push_back(mp[add]);
+            x++;
+        }
+    }
+    return ans;
     }
 };
