@@ -3,9 +3,8 @@ public:
     string shortestCommonSupersequence(string s1, string s2) {
         int n=s1.size(); 
         int m=s2.size();
-        int t[n+1][m+1]; //table generated while computing LCS length
-        string res; // result	
-        // compute LCS length using tabulation      
+        int t[n+1][m+1]; 
+        string res;      
     for(int i=0;i<=n;i++)
     {
         for(int j=0;j<=m;j++)
@@ -44,12 +43,12 @@ public:
             }
         }
     }
-    while(i>0) // if s1 characters are still left
+    while(i>0)
     {
         res.push_back(s1[i-1]);
         i--;
     }
-    while(j>0) //if s2 characters are still left
+    while(j>0) 
     {
         res.push_back(s2[j-1]);
         j--;
