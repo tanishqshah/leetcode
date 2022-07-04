@@ -1,6 +1,5 @@
 class Solution {
 public:
-    // int dp[1001][1001];
     int solve(string s1,string s2){
         int dp[s1.length()+1][s2.length()+1];
         for(int i=0;i<=s1.length();i++){
