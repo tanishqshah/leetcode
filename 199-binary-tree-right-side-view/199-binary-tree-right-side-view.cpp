@@ -9,19 +9,21 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    void solve(TreeNode* root,vector<int>&ans,int lvl){
+    void solve(vector<int>&ans,TreeNode* root,int k){
         if(root==NULL)
             return;
-        if(lvl==ans.size())
+        if(k==ans.size())
             ans.push_back(root->val);
-        solve(root->right,ans,lvl+1);
-        solve(root->left,ans,lvl+1);
+        solve(ans,root->right,k+1);
+        solve(ans,root->left,k+1);
+        
     }
     vector<int> rightSideView(TreeNode* root) {
         vector<int>ans;
-        solve(root,ans,0);
+        solve(ans,root,0);
         return ans;
     }
 };
