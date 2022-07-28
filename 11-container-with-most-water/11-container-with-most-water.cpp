@@ -1,22 +1,18 @@
 class Solution {
 public:
-    int maxArea(vector<int>& arr) {
+    int maxArea(vector<int>& nums) {
+        int high=nums.size()-1;
         int low=0;
-        int high=arr.size()-1;
-        int area;
-        int max=-1;
-        while(low<high)
-        {
-            area=abs(high-low);
-            area=area*min(arr[high],arr[low]);
-            if(max<area)
-                max=area;
-            if(arr[high]<arr[low])
+        int ans=0;
+        while(low<=high){
+            int height=min(nums[low],nums[high]);
+            ans=max(ans,height*(high-low));
+            if(nums[low]>nums[high]){
                 high--;
+            }
             else
                 low++;
-            
         }
-        return max;
+        return ans;
     }
 };
