@@ -10,6 +10,9 @@ public:
         {
             int count=0;
             string str="";
+            if(m1.find(s2[i])==m1.end()){
+                continue;
+            }
             for(int j=i;j<i+s1.length();j++)
                 m2[s2[j]]++;
             for(int k=0;k<s1.length();k++){
