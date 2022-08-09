@@ -10,18 +10,14 @@
  */
 class Solution {
 public:
-   ListNode *swapPairs(ListNode *head) {
-    ListNode *dummy = new ListNode(0), *node;
-    node = dummy;
-    dummy->next = head;
-    while (head && head->next) {
-        ListNode *nxt = head->next;
-        head->next = nxt->next;
-        nxt->next = head;
-        node->next = nxt;
-        node = head;
-        head = node->next;
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* temp=head;
+        if(temp && temp->next){
+            head=head->next;
+            temp->next=head->next;
+            head->next=temp;
+            head->next->next=swapPairs(head->next->next);
+        }
+        return head;
     }
-    return dummy->next;
-}
 };
