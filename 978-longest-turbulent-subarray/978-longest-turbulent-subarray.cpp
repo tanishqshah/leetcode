@@ -12,8 +12,8 @@ public:
                 count++;
                 ans=max(ans,count);
             }
-            else{
-                count = (arr[i]!=arr[i+1]) ? 2 : 1;
+            else {
+                count=(arr[i]!=arr[i+1]) ? 2 : 1;
             }
             flag=arr[i]<arr[i+1];
         }
