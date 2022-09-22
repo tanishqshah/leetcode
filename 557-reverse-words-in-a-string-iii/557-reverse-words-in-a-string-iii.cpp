@@ -1,20 +1,21 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        vector<string>s1;
-        string x="";
-        string add="";
-        for(int i=0;i<s.length();i++){
-            if(s[i]==' '){
-                x=x+add;
-                add="";
-                x=x+" ";
-            }
-            else{
-                add=s[i]+add;
+        string result;
+        int lastSpaceIndex = -1;
+        for (int strIndex = 0; strIndex < s.length(); strIndex++) {
+            if ((strIndex == s.length() - 1) || s[strIndex] == ' ') {
+                int reverseStrIndex =
+                    (strIndex == s.length() - 1) ? strIndex : strIndex - 1;
+                for (; reverseStrIndex > lastSpaceIndex; reverseStrIndex--) {
+                    result += s[reverseStrIndex];
+                }
+                if (strIndex != s.length() - 1) {
+                    result += ' ';
+                }
+                lastSpaceIndex = strIndex;
             }
         }
-        x=x+add;
-        return x;
+        return result;
     }
 };
