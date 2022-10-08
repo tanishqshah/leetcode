@@ -5,17 +5,18 @@
 <p>You may assume that each input would have exactly one solution.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> nums = [-1,2,1,-4], target = 1
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> nums = [0,0,0], target = 1
 <strong>Output:</strong> 0
+<strong>Explanation:</strong> The sum that is closest to the target is 0. (0 + 0 + 0 = 0).
 </pre>
 
 <p>&nbsp;</p>
