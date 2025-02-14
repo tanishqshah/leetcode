@@ -9,9 +9,8 @@ public:
         totalNode=n;
         adj.resize(n+1);
         for (auto &e : edges) {
-            adj[e[0]].push_back({e[1], e[2]});
+            addEdge({e[0],e[1],e[2]});
         }
-        // adj = adjMatrix;
     }
     
     void addEdge(vector<int> e) {
