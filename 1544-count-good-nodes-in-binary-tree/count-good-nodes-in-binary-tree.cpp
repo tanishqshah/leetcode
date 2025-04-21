@@ -23,9 +23,9 @@ public:
         solve(val,root->right,count);
     }
     int goodNodes(TreeNode* root) {
-        int count=1;
-        solve(root->val , root->left, count);
-        solve(root->val , root->right, count);
+        int count=0;
+        solve(root->val , root, count);
+        // solve(root->val , root->right, count);
         return count;
     }
 };
