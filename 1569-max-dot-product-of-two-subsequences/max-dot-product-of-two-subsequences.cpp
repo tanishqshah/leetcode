@@ -1,17 +1,27 @@
 class Solution {
 public:
+    int dp[501][501];
+    vector<int> a, b;
+    int n, m;
+
+    int solve(int i, int j) {
+        if (i == n || j == m) return -1e9;
+
+        if (dp[i][j] != -1) return dp[i][j];
+
+        int take = a[i] * b[j] + max(0, solve(i+1, j+1));
+        int skip1 = solve(i+1, j);
+        int skip2 = solve(i, j+1);
+
+        return dp[i][j] = max({take, skip1, skip2});
+    }
+
     int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
-        vector<vector<int>>dp(nums1.size()+1,vector<int>(nums2.size()+1,-1000000));
-        int n=nums1.size();
-        int m=nums2.size();
-        for(int i=1;i<=n;++i){
-            for(int j=1;j<=m;++j){
-                int soFar = max(dp[i - 1][j], dp[i][j - 1]);
-				int current = nums1[i - 1] * nums2[j - 1];
-				int maxCurr = max(current, current + dp[i - 1][j - 1]);
-				dp[i][j] = max(maxCurr, soFar);
-            }
-        }
-        return dp[n][m];
+        a = nums1;
+        b = nums2;
+        n = a.size();
+        m = b.size();
+        memset(dp, -1, sizeof(dp));
+        return solve(0, 0);
     }
 };
