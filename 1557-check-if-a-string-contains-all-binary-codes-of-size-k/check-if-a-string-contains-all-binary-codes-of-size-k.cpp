@@ -10,11 +10,13 @@ public:
                 tmp = tmp.substr(1);
             }
 
+            if(mp.size() == pow(2,k))
+                return true;
         }
+
+        
         cout<<mp.size();
-        if(mp.size() == pow(2,k)){
-            return true;
-        }
+        
         return false;
     }
 };
